@@ -212,30 +212,14 @@ public class FormAddTickets extends javax.swing.JFrame {
         int price = Integer.parseInt(txtPrice.getText());
         String creator = txtCreator.getText();
         Boolean isFlashSale = txtFlashSale.getText().equalsIgnoreCase("yes");
+        String imagePath = txtImage.getText();
         LocalDateTime flashSaleTimer = null;
-        if (isFlashSale) {
-            // Kalau FlashSale aktif, ambil waktu dari field
-            flashSaleTimer = LocalDateTime.parse(txtImage.getText());
-        }
         try {
             addTicketDB(id, title, desc, price, stock, creator, isFlashSale, imagePath);
+            JOptionPane.showMessageDialog(this, "Berhasil Add Ticket");
         } catch (Exception e) {
+            System.out.println(e);
         }
-
-//        try (Socket socket = new Socket("localhost", 5000); ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream()); ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
-//
-//            out.writeObject("ADD_TICKET");
-//
-//            Ticket newTicket = new Ticket(id, title, desc, price, stock, creator,
-//                LocalDate.now(), LocalDate.now(), imagePath);
-//            out.writeObject(newTicket);
-//
-//            String response = (String) in.readObject();
-//            JOptionPane.showMessageDialog(null, response);
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
