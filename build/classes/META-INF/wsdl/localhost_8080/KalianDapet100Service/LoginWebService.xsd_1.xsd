@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3 (RELEASE-2.4.3-ad3323c; 2019-01-21T17:46:06+0000) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://services.flashsale.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://services.flashsale.com/">
+
+<xs:element name="addTicketDB" type="tns:addTicketDB"/>
+
+<xs:element name="addTicketDBResponse" type="tns:addTicketDBResponse"/>
+
+<xs:element name="cekLogin" type="tns:cekLogin"/>
+
+<xs:element name="cekLoginResponse" type="tns:cekLoginResponse"/>
+
+<xs:element name="cekRegister" type="tns:cekRegister"/>
+
+<xs:element name="cekRegisterResponse" type="tns:cekRegisterResponse"/>
+
+<xs:element name="cekStock" type="tns:cekStock"/>
+
+<xs:element name="cekStockResponse" type="tns:cekStockResponse"/>
+
+<xs:element name="countSubtotal" type="tns:countSubtotal"/>
+
+<xs:element name="countSubtotalResponse" type="tns:countSubtotalResponse"/>
+
+<xs:element name="getTicketByID" type="tns:getTicketByID"/>
+
+<xs:element name="getTicketByIDResponse" type="tns:getTicketByIDResponse"/>
+
+<xs:element name="hello" type="tns:hello"/>
+
+<xs:element name="helloResponse" type="tns:helloResponse"/>
+
+<xs:element name="login" type="tns:login"/>
+
+<xs:element name="loginResponse" type="tns:loginResponse"/>
+
+<xs:element name="purchaseTicket" type="tns:purchaseTicket"/>
+
+<xs:element name="purchaseTicketResponse" type="tns:purchaseTicketResponse"/>
+
+<xs:element name="registerDB" type="tns:registerDB"/>
+
+<xs:element name="registerDBResponse" type="tns:registerDBResponse"/>
+
+<xs:element name="searchTicket" type="tns:searchTicket"/>
+
+<xs:element name="searchTicketResponse" type="tns:searchTicketResponse"/>
+
+<xs:element name="updateStockPurchase" type="tns:updateStockPurchase"/>
+
+<xs:element name="updateStockPurchaseResponse" type="tns:updateStockPurchaseResponse"/>
+
+<xs:element name="viewListTicket" type="tns:viewListTicket"/>
+
+<xs:element name="viewListTicketResponse" type="tns:viewListTicketResponse"/>
+
+<xs:complexType name="login">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="loginResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addTicketDB">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="desc" type="xs:string" minOccurs="0"/>
+<xs:element name="price" type="xs:int"/>
+<xs:element name="stock" type="xs:int"/>
+<xs:element name="creator" type="xs:string" minOccurs="0"/>
+<xs:element name="isFlashSale" type="xs:boolean" minOccurs="0"/>
+<xs:element name="imagePath" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addTicketDBResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="purchaseTicket">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="ticketID" type="xs:string" minOccurs="0"/>
+<xs:element name="quantity" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="purchaseTicketResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="updateStockPurchase">
+<xs:sequence>
+<xs:element name="ticket" type="tns:ticket" minOccurs="0"/>
+<xs:element name="quantity" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ticket">
+<xs:complexContent>
+<xs:extension base="tns:myModel">
+<xs:sequence>
+<xs:element name="createdDate" type="tns:localDate" minOccurs="0"/>
+<xs:element name="creator" type="xs:string" minOccurs="0"/>
+<xs:element name="desc" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="imagePath" type="xs:string" minOccurs="0"/>
+<xs:element name="isFlashSale" type="xs:boolean" minOccurs="0"/>
+<xs:element name="price" type="xs:int"/>
+<xs:element name="stock" type="xs:int"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="updatedDate" type="tns:localDate" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="myModel" abstract="true">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="localDate" final="extension restriction">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="updateStockPurchaseResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="viewListTicket">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="viewListTicketResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:ticket" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="searchTicket">
+<xs:sequence>
+<xs:element name="keyword" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="searchTicketResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:ticket" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cekStock">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cekStockResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="countSubtotal">
+<xs:sequence>
+<xs:element name="quantity" type="xs:int"/>
+<xs:element name="ticket" type="tns:ticket" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="countSubtotalResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cekLogin">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cekLoginResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registerDB">
+<xs:sequence>
+<xs:element name="fullname" type="xs:string" minOccurs="0"/>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="dob" type="xs:string" minOccurs="0"/>
+<xs:element name="member_since" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registerDBResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="hello">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="helloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cekRegister">
+<xs:sequence>
+<xs:element name="Username" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cekRegisterResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getTicketByID">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getTicketByIDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:ticket" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
